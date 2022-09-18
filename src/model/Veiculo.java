@@ -2,7 +2,7 @@ package model;
 
 import util.Contador;
 
-public class Veiculo {
+public class Veiculo implements Banco{
 	private Integer id;
 	
 	private String modelo;

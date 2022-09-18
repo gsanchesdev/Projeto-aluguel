@@ -12,11 +12,11 @@ public class Cliente extends Pessoa{
 	
 		this.veiculos = new ArrayList();
 	}
-
+	
 	public List<Veiculo> getVeiculos() {
 		return veiculos;
 	}
-
+	
 	public void setVeiculos(List<Veiculo> veiculos) {
 		this.veiculos = veiculos;
 	}

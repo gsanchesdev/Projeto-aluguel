@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vendedor extends Pessoa{
+public class Vendedor extends Pessoa implements Banco{
 
 	public static final double COMISSAO = 0.1;
 	private double salario;
