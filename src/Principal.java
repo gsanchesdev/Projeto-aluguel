@@ -11,9 +11,6 @@ import service.AdminService;
 import service.ClienteService;
 import service.VeiculoService;
 import service.VendedorService;
-import util.Normaliza;
-import exception.SistemaException;
-
 
 public class Principal {
 

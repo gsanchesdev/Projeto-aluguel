@@ -7,7 +7,6 @@ import exception.SistemaException;
 import model.Cliente;
 import model.Veiculo;
 import repository.ClienteRepository;
-import util.Normaliza;
 
 public class ClienteService {
 	
@@ -16,20 +15,21 @@ public class ClienteService {
 
 	public ClienteService(Scanner sc) {
 		this.sc = sc;
-		repository.salvar(new Cliente("joao", "joao@", "poa", "123"));
+		repository.salvar(new Cliente("Joao", "joao@cliente", "poa", "1233"));
 	}
 
 	public Cliente confereEmail(String email) {
 		 List<Cliente> clientesCadastrados = repository.buscarTodos();
 		 
 		 for(Cliente cliente: clientesCadastrados) {
-			 if(cliente.getEmail().equals(Normaliza.normalizaEmail(email))) {
+			 if(cliente.getEmail().equals(email)) {
 				 return cliente;
 			 }
 		 }
 	
 		 return this.cadastrarCliente(email);
 	}
+	
 	
 	public boolean conferirSenha(Cliente clienteParam, String senha) {
 		Cliente cliente = repository.buscarPorId(clienteParam.getId());
@@ -73,7 +73,7 @@ public class ClienteService {
 		
 		//tratamento de exception
 		if(cliente == null) {
-			throw new SistemaException("Cliente nao encontrado!");
+			throw new SistemaException("Cliente não encontrado!");
 		}
 	
 		

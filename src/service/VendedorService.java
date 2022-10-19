@@ -8,7 +8,6 @@ import model.Cliente;
 import model.Veiculo;
 import model.Vendedor;
 import repository.VendedorRepository;
-import util.Normaliza;
 
 public class VendedorService {
 	Scanner sc;
@@ -17,9 +16,9 @@ public class VendedorService {
 	public VendedorService(Scanner sc) {
 		this.sc = sc;
 		
-		repository.salvar(new Vendedor("joao", "joao@vendedor", "poa", "123", 1500)); 
-		repository.salvar(new Vendedor("maria", "maria@vendedor", "poa", "1234", 3000)); 
-		repository.salvar(new Vendedor("jose", "jose@vendedor", "poa", "12", 2000)); 
+		repository.salvar(new Vendedor("joao", "joao@vendedor", "poa", "1233", 1500)); 
+		repository.salvar(new Vendedor("maria", "maria@vendedora", "poa", "1234", 3000)); 
+		repository.salvar(new Vendedor("jose", "jose@vendedor", "poa", "1222", 2000)); 
 		
 	}
 
@@ -27,7 +26,7 @@ public class VendedorService {
 		 List<Vendedor> vendedoresCadastrados = repository.buscarTodos();
 		 
 		 for(Vendedor vendedor: vendedoresCadastrados) {
-			 if(vendedor.getEmail().equals(Normaliza.normalizaEmail(email))) {
+			 if(vendedor.getEmail().equals(email)) {
 				 return vendedor;
 			 }
 		 }
@@ -56,7 +55,7 @@ public class VendedorService {
 		Vendedor vendedor = repository.BuscarPorId(idVendedor);
 		
 		if(vendedor == null) {
-			throw new SistemaException("Vendedor nao encontrado!");
+			throw new SistemaException("Vendedor não encontrado!");
 		}
 		
 		vendedor.getVeiculosAlugado().add(veiculo);
@@ -83,23 +82,23 @@ public class VendedorService {
 		}
 		
 		double comissao = totalVendas * vendedor.COMISSAO;
-		System.out.println("Seu salario atual e: "+ vendedor.getSalario());
-		System.out.println("Sua comissao e: "+ comissao);
-		System.out.println("Seu salario + comissao e: "+ (vendedor.getSalario() + comissao));
+		System.out.println("Seu salário atual: "+ vendedor.getSalario());
+		System.out.println("Sua comissão: "+ comissao);
+		System.out.println("Seu salário + comissão: "+ (vendedor.getSalario() + comissao));
 		
 	}
 	
 	public void cadastrarVendedor() {
 		
-		System.out.println("digite seu nome: ");		
+		System.out.println("Digite seu nome: ");		
 		String nome = sc.next();
-		System.out.println("digite seu email: ");		
+		System.out.println("Digite seu e-mail: ");		
 		String email = sc.next();
-		System.out.println("digite sua cidade: ");		
+		System.out.println("Digite sua cidade: ");		
 		String cidade = sc.next();
-		System.out.println("digite uma senha: ");		
+		System.out.println("Digite uma senha: ");		
 		String senha = sc.next();
-		System.out.println("digite o salario: ");		
+		System.out.println("Digite o salário: ");		
 		double salario = sc.nextDouble();
 
 		Vendedor vendedor = new Vendedor(nome, email, cidade, senha, salario);

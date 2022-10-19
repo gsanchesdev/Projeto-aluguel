@@ -18,41 +18,41 @@ public class VeiculoService {
 	public VeiculoService(Scanner sc) {
 		this.sc = sc;
 		
-		repository.salvar(new Veiculo("palio", "fiat", "preto", "fhnfgxh", "carro", 634));
-		repository.salvar(new Veiculo("mobi", "fiat", "vermelho", "fgj33ho", "carro", 534));
-		repository.salvar(new Veiculo("toro", "fiat", "preto", "v457hlho", "carro", 244));
-		repository.salvar(new Veiculo("cg 150", "fiat", "preto", "dfh346o", "moto", 334));
+		repository.salvar(new Veiculo("Palio", "Fiat", "Preto", "IQO90MD", "carro", 300));
+		repository.salvar(new Veiculo("Mobi", "Fiat", "Vermelho", "DOC12MLS", "carro", 350));
+		repository.salvar(new Veiculo("Civic", "Honda", "Preto", "IQKN234", "carro", 400));
+		repository.salvar(new Veiculo("CG 150", "Honda", "preto", "IKLA234", "moto", 200));
 		
 	}
 	
 
 	public void cadastrarVeiculo() {
-		System.out.println("Digite o modelo do veiculo: ");
+		System.out.println("Digite o modelo do veículo: ");
 		String modelo = sc.next();
 		
-		System.out.println("Digite a marca do veiculo: ");
+		System.out.println("Digite a marca do veículo: ");
 		String marca = sc.next();
 		
-		System.out.println("Digite a cor do veiculo: ");
+		System.out.println("Digite a cor do veículo: ");
 		String cor = sc.next();
 		
-		System.out.println("Digite a placa do veiculo: ");
+		System.out.println("Digite a placa do veículo: ");
 		String placa = sc.next();
 		
-		System.out.println("Digite o segmento do veiculo: ");
+		System.out.println("Digite o segmento do veículo: ");
 		String tipo = sc.next();
 		
-		System.out.println("Digite o valor de locacao do veiculo: ");
+		System.out.println("Digite o valor de locacão do veículo: ");
 		double valor = sc.nextDouble();
 		
 		Veiculo veiculo = new Veiculo(modelo, marca, cor, placa, tipo, valor);
 		
 		this.repository.salvar(veiculo); 
 	
-		System.out.println("Voce cadastrou o veiculo!");
+		System.out.println("Você cadastrou o veículo!");
 	}
 	
-	public void buscarTodosVeiculosLivres(){
+	public void buscarTodosVeiculosLivres() {
 		List<Veiculo> todosVeiculos = this.repository.buscarTodos();
 		
 		for(Veiculo veiculo: todosVeiculos) {
@@ -68,7 +68,7 @@ public class VeiculoService {
 		
 		//tratamento de exception
 		if(veiculo == null) {
-			throw new SistemaException("Veiculo nao encontrado!");
+			throw new SistemaException("Veículo não encontrado!");
 		}
 		
 		veiculo.setStatus(Status.ALUGADO);
@@ -80,11 +80,11 @@ public class VeiculoService {
 		Veiculo veiculo = this.repository.buscarPorId(id);
 		
 		if(veiculo == null) {
-			throw new SistemaException("Veiculo nao encontrado!");
+			throw new SistemaException("Veículo não encontrado!");
 		}
 		
 		if(!cliente.getVeiculos().contains(veiculo)) {
-			throw new SistemaException("Voce nao possui este veiculo");
+			throw new SistemaException("Você não possui este veículo");
 		}
 		
 		veiculo.setStatus(Status.LIVRE);
